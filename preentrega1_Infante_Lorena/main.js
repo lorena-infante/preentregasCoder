@@ -1,46 +1,84 @@
-/*
-* Preentrega a realizar: *
-- Lista de supermercado con restricción de bebidas alcohólicas para menores de edad.
-* Requerimientos:
-- Realizar una lista de productos a comprar en un supermercado que reciba por medio de inputs los valores. 
-- Los productos de la lista van a ser predeterminados. Se dará una lista inicial de opciones.
-- No se deben repetir los productos
-- La lista podrá tener máximo 10 elementos y mínimo 2
-- Se debe restringir el ingreso de bebidas alcohólicas a la lista para personas menores de 18 años
-- Por cada elemento ingresado se debe preguntar si desea agregar uno más o no.
-- Mostrar en un alert la lista completa.
+alert(`¡Hola! 👋 Bienvenido a tu lista de supermercado. Por ser cliente nuevo te regalaremos $5.000 para tu primera compra 💰. Podrás añadir a tu lista cualquiera de los productos que verás a continuación 📃. Al final te entregaremos tu listado final con el que podrás ir a reclamar los productos a nuestro punto de venta. ¡Comencemos! ✨`);
 
-* Temas incluídos en el presente desarrollo:
-- Variables
-- Loops
-- Estructuras de control
-*/
+let options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
+    Leche 🥛 por $500\n
+    Pan 🍞 por $400\n
+    Carne 🍖 por $1000\n
+    Frutas 🥝 por $700\n
+    Arroz 🍚 por $900\n
+    Papas 🥔 por $1200\n
+    Whiskey 🥃 por $3000\n
+    Cerveza 🍺 por $2000\n`).toLowerCase();
 
-/*variables*/
-let name = prompt(`¡Hola! Qué bueno verte. Escribe tu nombre a continuación:`);
-let age = Number(prompt(`Escribe tu edad en números`));
-let options = prompt(`Puedes añadir a tu lista alguna de estas opciones:\n
-    Arroz\n
-    Avena\n
-    Fruta\n
-    Galletas\n
-    Whiskey \n
-    Ron \n
-    Aguardiente \n
-    Carne \n
-    Papas \n
-    Pan`);
-let item1;
-let item2;
-let item3;
-let item4;
-let item5;
-let item6;
-let item7;
-let item8;
-let item9;
-let item10;
-let keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'sí' o 'no'`);
+//productos
+const MILK = 'leche';
+const BREAD = 'pan';
+const MEAT = 'carne';
+const FRUITS = 'frutas';
+const RICE = 'arroz';
+const POTATOES = 'papas';
+const WHISKEY = 'whiskey';
+const BEER = 'cerveza';
+
+//precio de cada producto
+const MILK_PRICE = 500;
+const BREAD_PRICE = 400;
+const MEAT_PRICE = 1000;
+const FRUITS_PRICE = 700;
+const RICE_PRICE = 900;
+const POTATOES_PRICE = 1200;
+const WHISKEY_PRICE = 3000;
+const BEER_PRICE = 2000;
+//valor inicial de regalo
+const INITIAL_VALUE = 5000;
+//continuar
+let keepAddingItems;
+const YES = 'si';
+const NO = 'no';
+//output
 let finalList;
-let numberOfElements = 0;
+let total = 0;
+let remainder;
+
+do {
+    switch (options) {
+        case MILK:
+            if (total === 0) {
+                remainder = INITIAL_VALUE - MILK_PRICE;
+                console.log(`Le van quedando $${remainder} pesos`);
+            } else {
+                remainder = (INITIAL_VALUE - total) - MILK_PRICE;
+                console.log(`Le van quedando $${remainder} pesos`);
+            }
+            total = total + MILK_PRICE;
+            console.log(`El total de la factura va en $${total}`);
+            break;
+        case BREAD:
+            console.log();
+            break;
+        default:
+            alert(`Lo sentimos, el producto ${options} que ingresaste no existe en nuestro stock.`);
+            total = 0;
+            break;
+
+    }
+    // continuar
+    keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`);
+    if (keepAddingItems == YES) {
+        options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
+    Leche 🥛 por $500\n
+    Pan 🍞 por $400\n
+    Carne 🍖 por $1000\n
+    Frutas 🥝 por $700\n
+    Arroz 🍚 por $900\n
+    Papas 🥔 por $1200\n
+    Whiskey 🥃 por $3000\n
+    Cerveza 🍺 por $2000\n`).toLowerCase();
+    }else {
+        alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
+        break;
+    }
+    console.log(`El total hasta aquí es: ${total}`)
+
+} while (total >= 1 && total <= 5000);
 
