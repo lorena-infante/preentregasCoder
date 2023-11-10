@@ -123,20 +123,23 @@ do {
     }
     // continuar
     keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`);
-
     if (keepAddingItems == YES) {
         continue;
-
     } else {
-        if (keepAddingItems == NO) {
+        if (keepAddingItems == NO && remainder != undefined) {
             alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
             break;
+        } else if (remainder == undefined) {
+            alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${INITIAL_VALUE} pesos por utilizar. ¡Nos vemos en la tienda!`);
+            break;
         } else {
-            alert(`Comando Inválido`);
+            alert(`Comando Inválido. Debes escribir 'si' o 'no'`);
+           continue;
         }
     }
+    
 } while (total >= 0 && total <= 5000);
 
-if (total > 5000) {
+if (total > 4900) {
     alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
 }
