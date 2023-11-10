@@ -1,13 +1,5 @@
 alert(`¡Hola! 👋 Bienvenido a tu lista de supermercado. Por ser cliente nuevo te regalaremos $5.000 para tu primera compra 💰. Podrás añadir a tu lista cualquiera de los productos que verás a continuación 📃. Al final podrás obtener el total e ir a reclamar los productos a nuestro punto de venta. ¡Comencemos! ✨`);
 
-/* let options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
-    Leche 🥛 por $500\n
-    Pan 🍞 por $400\n
-    Carne 🍖 por $1000\n
-    Frutas 🥝 por $700\n
-    Arroz 🍚 por $900\n
-    Papas 🥔 por $1200\n`).toLowerCase(); */
-
 //productos
 const MILK = 'leche';
 const BREAD = 'pan';
@@ -119,27 +111,28 @@ do {
         default:
             alert(`Lo sentimos, el producto ${options} que ingresaste no existe en stock.`);
             break;
-
     }
-    // continuar
-    keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`);
-    if (keepAddingItems == YES) {
-        continue;
+    if (total > 4999) {
+        alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
     } else {
-        if (keepAddingItems == NO && remainder != undefined) {
-            alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
-            break;
-        } else if (remainder == undefined) {
-            alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${INITIAL_VALUE} pesos por utilizar. ¡Nos vemos en la tienda!`);
-            break;
+        // continuar
+        keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`).toLocaleLowerCase();
+        if (keepAddingItems == YES) {
+            continue;
         } else {
-            alert(`Comando Inválido. Debes escribir 'si' o 'no'`);
-           continue;
+            if (keepAddingItems == NO && remainder != undefined) {
+                alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
+                break;
+            } else if (remainder == undefined) {
+                alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${INITIAL_VALUE} pesos por utilizar. ¡Nos vemos en la tienda!`);
+                break;
+            } else {
+                alert(`Comando Inválido. Debes escribir 'si' o 'no'`);
+                continue;
+            }
         }
-    }
-    
-} while (total >= 0 && total <= 5000);
 
-if (total > 4900) {
-    alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
-}
+    }
+
+} while (total >= 0 && total <= 4999);
+
