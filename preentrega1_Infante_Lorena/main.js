@@ -40,6 +40,7 @@ let finalList;
 let total = 0;
 let remainder;
 
+//loop
 do {
     switch (options) {
         case MILK:
@@ -57,28 +58,28 @@ do {
             console.log();
             break;
         default:
-            alert(`Lo sentimos, el producto ${options} que ingresaste no existe en nuestro stock.`);
+            alert(`Lo sentimos, el producto ${options} que ingresaste no existe en stock.`);
             total = 0;
             break;
 
     }
     // continuar
     keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`);
-    if (keepAddingItems == YES) {
-        options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
-    Leche 🥛 por $500\n
-    Pan 🍞 por $400\n
-    Carne 🍖 por $1000\n
-    Frutas 🥝 por $700\n
-    Arroz 🍚 por $900\n
-    Papas 🥔 por $1200\n
-    Whiskey 🥃 por $3000\n
-    Cerveza 🍺 por $2000\n`).toLowerCase();
-    }else {
-        alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
-        break;
-    }
+
+        if (keepAddingItems == YES) {
+            options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
+            Leche 🥛 por $500\n
+            Pan 🍞 por $400\n
+            Carne 🍖 por $1000\n
+            Frutas 🥝 por $700\n
+            Arroz 🍚 por $900\n
+            Papas 🥔 por $1200\n
+            Whiskey 🥃 por $3000\n
+            Cerveza 🍺 por $2000\n`).toLowerCase();
+        } else {
+            alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
+            break;
+        }
     console.log(`El total hasta aquí es: ${total}`)
 
 } while (total >= 1 && total <= 5000);
-
