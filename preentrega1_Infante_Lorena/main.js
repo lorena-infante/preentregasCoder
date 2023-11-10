@@ -37,7 +37,7 @@ let remainder;
 
 //loop
 do {
-   let options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
+    let options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
         Leche 🥛 por $500\n
         Pan 🍞 por $400\n
         Carne 🍖 por $1000\n
@@ -126,14 +126,17 @@ do {
 
     if (keepAddingItems == YES) {
         continue;
-        
-    } else {
-        alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
-        break;
-    }
-    console.log(`El total hasta aquí es: ${total}`)
-} while (total >= 0 && total <= 5000 );
 
-if(total > 5000){
+    } else {
+        if (keepAddingItems == NO) {
+            alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
+            break;
+        } else {
+            alert(`Comando Inválido`);
+        }
+    }
+} while (total >= 0 && total <= 5000);
+
+if (total > 5000) {
     alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
 }
