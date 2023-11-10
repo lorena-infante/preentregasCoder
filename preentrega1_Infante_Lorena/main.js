@@ -35,49 +35,45 @@ do {
         Frutas 🥝 por $700\n
         Arroz 🍚 por $900\n
         Papas 🥔 por $1200\n`).toLowerCase();
-    switch (options) {
+    
+        switch (options) {
         case MILK:
             remainder = (INITIAL_VALUE - total) - MILK_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + MILK_PRICE;
             break;
 
         case BREAD:
             remainder = (INITIAL_VALUE - total) - BREAD_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + BREAD_PRICE;
             break;
 
         case MEAT:
             remainder = (INITIAL_VALUE - total) - MEAT_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + MEAT_PRICE;
             break;
 
         case FRUITS:
             remainder = (INITIAL_VALUE - total) - FRUITS_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + FRUITS_PRICE;
             break;
 
         case RICE:
             remainder = (INITIAL_VALUE - total) - RICE_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + RICE_PRICE;
             break;
 
         case POTATOES:
             remainder = (INITIAL_VALUE - total) - POTATOES_PRICE;
-            console.log(`Le van quedando $${remainder} pesos`);
             total = total + POTATOES_PRICE;
-            console.log(`${POTATOES} añadidas. El total de la factura va en $${total}`);
             break;
 
         default:
             alert(`Lo sentimos, el producto ${options} que ingresaste no existe en stock.`);
             break;
     }
+
     console.log(`Producto ${options} añadido. El total de la factura va en $${total}`);
+    
     if (total > 4999) {
         alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
     } else {
