@@ -25,9 +25,8 @@ const YES = 'si';
 const NO = 'no';
 //output
 let total = 0;
-let remainder;
+let remainder = 5000;
 
-//loop
 do {
     let options = prompt(`Puedes añadir a tu lista alguna de estas opciones (escríbela sin el emoji ni el precio. Sólo el nombre del producto 😉):\n
         Leche 🥛 por $500\n
@@ -38,72 +37,38 @@ do {
         Papas 🥔 por $1200\n`).toLowerCase();
     switch (options) {
         case MILK:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - MILK_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - MILK_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - MILK_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + MILK_PRICE;
-            console.log(`${MILK} añadida. El total de la factura va en $${total}`);
             break;
+
         case BREAD:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - BREAD_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - BREAD_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - BREAD_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + BREAD_PRICE;
-            console.log(`${BREAD} añadido. El total de la factura va en $${total}`);
             break;
 
         case MEAT:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - MEAT_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - MEAT_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - MEAT_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + MEAT_PRICE;
-            console.log(`${MEAT} añadida. El total de la factura va en $${total}`);
             break;
 
         case FRUITS:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - FRUITS_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - FRUITS_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - FRUITS_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + FRUITS_PRICE;
-            console.log(`${FRUITS} añadidas. El total de la factura va en $${total}`);
             break;
 
         case RICE:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - RICE_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - RICE_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - RICE_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + RICE_PRICE;
-            console.log(`${RICE} añadido. El total de la factura va en $${total}`);
             break;
 
         case POTATOES:
-            if (total === 0) {
-                remainder = INITIAL_VALUE - POTATOES_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            } else {
-                remainder = (INITIAL_VALUE - total) - POTATOES_PRICE;
-                console.log(`Le van quedando $${remainder} pesos`);
-            }
+            remainder = (INITIAL_VALUE - total) - POTATOES_PRICE;
+            console.log(`Le van quedando $${remainder} pesos`);
             total = total + POTATOES_PRICE;
             console.log(`${POTATOES} añadidas. El total de la factura va en $${total}`);
             break;
@@ -112,27 +77,23 @@ do {
             alert(`Lo sentimos, el producto ${options} que ingresaste no existe en stock.`);
             break;
     }
+    console.log(`Producto ${options} añadido. El total de la factura va en $${total}`);
     if (total > 4999) {
         alert('Lo sentimos, tu presupuesto se ha sobrepasado. Adiós');
     } else {
         // continuar
-        keepAddingItems = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`).toLocaleLowerCase();
+        keepAddingItems = prompt(`Te quedan $${remainder} pesos. ¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`).toLocaleLowerCase();
         if (keepAddingItems == YES) {
             continue;
         } else {
-            if (keepAddingItems == NO && remainder != undefined) {
+            if (keepAddingItems == NO) {
                 alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${remainder} pesos por utilizar. ¡Nos vemos en la tienda!`);
-                break;
-            } else if (remainder == undefined) {
-                alert(`Perfecto. El total de tu factura es $${total}. Te quedan $${INITIAL_VALUE} pesos por utilizar. ¡Nos vemos en la tienda!`);
                 break;
             } else {
                 alert(`Comando Inválido. Debes escribir 'si' o 'no'`);
                 continue;
             }
         }
-
     }
-
 } while (total >= 0 && total <= 4999);
 
