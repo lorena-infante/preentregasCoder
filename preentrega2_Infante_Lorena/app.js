@@ -102,5 +102,33 @@ const caqui_prod = crearProducto(frutalCaqui);
 //llamando el método verDetallesProducto
 //let verProductoMoscatel = moscatel_prod.verDetallesProducto();
 
+// Interacción con el usuario
+const verProducto = prompt(`¡Hola! Tenemos árboles de dos tipos distintos:\n
+1. Parras 🍇\n
+2. Frutales 🌳\n
+Por favor escoge una opción (Escribe sólo el nombre 😉)`).toLowerCase();
 
+const PARRAS = 'parras';
+const FRUTALES = 'frutales';
+const MOSCAT_PROMPT = 'moscatel';
+const SULT_PROMPT = 'sultanina';
+const TORON_PROMPT = 'torontel';
+const ALMEN_PROMPT = 'almendro';
+const ARAN_PROMPT = 'arandano';
+const CAQUI_PROMPT = 'caqui';
+
+const VER_DETALLES_SI = 'si';
+const VER_DETALLES_NO = 'no';
+
+const AGREGAR_CARRITO_SI = 'si';
+const AGREGAR_CARRITO_NO = 'no';
+
+
+const CONTINUAR_AGREGANDO_SI = 'si';
+const CONTINUAR_AGREGANDO_NO = 'no';
+
+let stockActual;
+let stockFinal;
+let totalFactura;
+let totalProductosAcumulados = [];
 
