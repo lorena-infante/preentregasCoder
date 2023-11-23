@@ -1,5 +1,5 @@
 //clase constructora
-class Producto {
+    class Producto {
         constructor(nombre,precio,altura,
             img,descripcion,cuidados,iluminacion, stock,temporada){
                 this.nombre = nombre;
@@ -13,10 +13,10 @@ class Producto {
                 this.temporada = temporada;
         }
         verDetallesProducto(){
-            console.log(`El producto ${this.nombre} tiene las siguientes características: - Descripción: ${this.descripcion}.
+            alert(`El producto ${this.nombre} tiene las siguientes características: 
+            - Descripción: ${this.descripcion}.
             - Cuidados: ${this.cuidados}.
             - Iluminación: ${this.iluminacion}.
-            - Precio: ${this.precio}.
-            `);
+            - Precio: ${this.precio}.`);
         }
 }

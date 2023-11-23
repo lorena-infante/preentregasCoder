@@ -74,4 +74,33 @@ const categorias = [
     }
 ];
 
-//instanciación de la clase
+// declaración de constantes
+
+const uvaMoscatel = categorias[0].parras.moscatel;
+const uvaSultanina = categorias[0].parras.sultanina;
+const uvaTorontel = categorias[0].parras.torontel;
+const frutalAlmendro = categorias[0].frutales.almendro;
+const frutalArandano = categorias[0].frutales.arandano;
+const frutalCaqui = categorias[0].frutales.caqui;
+
+
+//instanciación de la clase dentro de una función
+
+function crearProducto(producto){
+    const newProd = new Producto (producto.nombre_prod,producto.precio_prod, producto.altura, producto.img, producto.descripcion, producto.cuidados, producto.iluminacion, producto.stock, producto.temporada);    
+    return newProd;
+}
+
+const moscatel_prod = crearProducto(uvaMoscatel);
+const sultanina_prod = crearProducto(uvaSultanina);
+const torontel_prod = crearProducto(uvaTorontel);
+const almendro_prod = crearProducto(frutalAlmendro);
+const arandano_prod = crearProducto(frutalArandano);
+const caqui_prod = crearProducto(frutalCaqui);
+
+
+//llamando el método verDetallesProducto
+//let verProductoMoscatel = moscatel_prod.verDetallesProducto();
+
+
+
