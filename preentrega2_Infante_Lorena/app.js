@@ -9,7 +9,7 @@ const categorias = [
                 img: './moscatel.jpg',
                 descripcion: 'Uva de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [sol],
+                iluminacion: [1],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             },
@@ -20,7 +20,7 @@ const categorias = [
                 img: './sultanina.jpg',
                 descripcion: 'Uva de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [sol],
+                iluminacion: [1],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             },
@@ -31,7 +31,7 @@ const categorias = [
                 img: './torontel.jpg',
                 descripcion: 'Uva de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [sol],
+                iluminacion: [1],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             }
@@ -44,7 +44,7 @@ const categorias = [
                 img: './almendro.jpg',
                 descripcion: 'Almendro de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [sol, semi - sombra],
+                iluminacion: [1,3],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             },
@@ -55,7 +55,7 @@ const categorias = [
                 img: './arandano.jpg',
                 descripcion: 'Arándano de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [semi - sombra],
+                iluminacion: [3],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             },
@@ -66,7 +66,7 @@ const categorias = [
                 img: './caqui.jpg',
                 descripcion: 'Caqui de Chile',
                 cuidados: 'Regarla',
-                iluminacion: [semi - sombra],
+                iluminacion: [3],
                 stock: 10,
                 temporada: "Otoño/Primavera"
             }
