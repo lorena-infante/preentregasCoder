@@ -94,24 +94,35 @@ do {
             //invocando el método de la clase Producto
             moscatel_prod.verDetallesProducto();
             let añadir = prompt(`¿Deseas añadir este producto al carrito?Responde 'si' o 'no'`).toLowerCase();
-            if (añadir === AGREGAR_CARRITO_SI){
+            if (añadir === AGREGAR_CARRITO_SI) {
                 cantidadProductos = Number(prompt(`Ingresa la cantidad de productos que quieras añadir. Actualmente en stock: ${moscatel_prod.stock}`));
                 
-            }else {
-                continuar = prompt(`¿Deseas continuar en el sistema? Responde 'si' o 'no'`).toLowerCase();
-                if(continuar === CONTINUAR_SI){
-                    break;
+                if(cantidadProductos < moscatel_prod.stock){
+                    moscatel_prod.modificarStock(cantidadProductos);
+                    
                 }else{
-                    alert(`OK. Nos vemos pronto. Adiós 👋`);
+                    alert(`Lo sentimos. Sólo existen ${moscatel_prod.stock} productos en stock`);
+                }
+
+            } else if (añadir === AGREGAR_CARRITO_NO) {
+                continuar = prompt(`¿Deseas continuar en el sistema? Responde 'si' o 'no'`).toLowerCase();
+                if (continuar === CONTINUAR_SI) {
                     break;
+                } else {
+                    if (continuar === CONTINUAR_NO) {
+                        alert(`OK. Nos vemos pronto. Adiós 👋`); continue;
+                    } else {
+                        alert(`OK. Nos vemos pronto. Adiós desde el else else 👋`);
+                        break;
+                    }
                 }
             }
-            
+
             break;
 
     }
 
-} while (stockActualMoscatel > 0 || stockActualSultanina > 0 || stockActualTorontel > 0 || continuar === CONTINUAR_NO);
+} while (continuar === CONTINUAR_SI || stockActualMoscatel > 0 || stockActualSultanina > 0 || stockActualTorontel > 0);
 
 
 alert(`Lo sentimos, el stock en todas nuestras parras se ha agotado.`);
