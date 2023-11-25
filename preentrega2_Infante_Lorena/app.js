@@ -97,7 +97,8 @@ do {
             if (añadir === AGREGAR_CARRITO_SI) {
                 cantidadProductos = Number(prompt(`Ingresa la cantidad de productos que quieras añadir. Actualmente en stock: ${moscatel_prod.stock}`));
                 
-                if(cantidadProductos < moscatel_prod.stock){
+                if(cantidadProductos <= moscatel_prod.stock){
+                    moscatel_prod.anadirAlCarrito(cantidadProductos);
                     moscatel_prod.modificarStock(cantidadProductos);
                     
                 }else{
