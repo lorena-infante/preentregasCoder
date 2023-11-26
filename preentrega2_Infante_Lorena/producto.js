@@ -19,19 +19,4 @@ class Producto {
         - Iluminación: ${this.iluminacion}.
         - Precio: ${this.precio}.`);
     }
-    anadirAlCarrito(cantidad){
-        let carrito = [];
-        carrito.push(`${cantidad} ${this.nombre}`);
-        
-        console.log(`Ahora el carrito contiene: ${carrito}`);
-    }
-
-    modificarStock(cantidad){
-        let stockInicial = this.stock;
-        let stockActual = stockInicial-cantidad;
-        this.stock = stockActual;
-        alert(`El nuevo stock para ${this.nombre} es de ${this.stock} productos`);
-        return this.stock;
-    }
-    
 }

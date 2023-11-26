@@ -1,43 +1,41 @@
 //categorización
-const categorias = [
-    {
-        parras: {
-            moscatel: {
-                nombre_prod: "moscatel",
-                precio_prod: 8000,
-                altura: '1mt',
-                img: './moscatel.jpg',
-                descripcion: 'Uva de Chile',
-                cuidados: 'Regarla',
-                iluminacion: [1],
-                stock: 10,
-                temporada: "Otoño/Primavera"
-            },
-            sultanina: {
-                nombre_prod: "sultanina",
-                precio_prod: 7000,
-                altura: '1mt',
-                img: './sultanina.jpg',
-                descripcion: 'Uva de Chile',
-                cuidados: 'Regarla',
-                iluminacion: [1],
-                stock: 5,
-                temporada: "Otoño/Primavera"
-            },
-            torontel: {
-                nombre_prod: "torontel",
-                precio_prod: 9000,
-                altura: '1mt',
-                img: './torontel.jpg',
-                descripcion: 'Uva de Chile',
-                cuidados: 'Regarla',
-                iluminacion: [1],
-                stock: 4,
-                temporada: "Otoño/Primavera"
-            }
+const categorias = {
+    parras: {
+        moscatel: {
+            nombre_prod: "moscatel",
+            precio_prod: 8000,
+            altura: '1mt',
+            img: './moscatel.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 10,
+            temporada: "Otoño/Primavera"
+        },
+        sultanina: {
+            nombre_prod: "sultanina",
+            precio_prod: 7000,
+            altura: '1mt',
+            img: './sultanina.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 5,
+            temporada: "Otoño/Primavera"
+        },
+        torontel: {
+            nombre_prod: "torontel",
+            precio_prod: 9000,
+            altura: '1mt',
+            img: './torontel.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 4,
+            temporada: "Otoño/Primavera"
         }
     }
-];
+};
 
 //constantes globales
 
@@ -56,29 +54,13 @@ function crearProducto(producto) {
     return newProd;
 }
 
-// declaración de constantes (para hacer más legible el nombre del elemento a la hora de invocarlo dentro de la función como parámetro)
-const uvaMoscatel = categorias[0].parras.moscatel;
-
-const uvaSultanina = categorias[0].parras.sultanina;
-const uvaTorontel = categorias[0].parras.torontel;
-
 // creación de nuevos productos de la clase Producto
-const moscatel_prod = crearProducto(uvaMoscatel);
-const sultanina_prod = crearProducto(uvaSultanina);
-const torontel_prod = crearProducto(uvaTorontel);
+const moscatel_prod = crearProducto(categorias.parras.moscatel);
+const sultanina_prod = crearProducto(categorias.parras.sultanina);
+const torontel_prod = crearProducto(categorias.parras.torontel);
 
 //variables globales
 
-/* let continuarAgregando = prompt(`¿Deseas seguir añadiendo items? Escribe 'si' o 'no'`); */
-let stockActualMoscatel = moscatel_prod.stock;
-let stockFinalMoscatel;
-let stockActualSultanina = sultanina_prod.stock;
-let stockFinalSultanina;
-let stockActualTorontel = torontel_prod.stock;
-let stockFinalTorontel;
-let totalFactura = {};
-let totalCarrito = {};
-let cantidadProductos;
 let continuar;
 
 // Interacción con el usuario
@@ -96,12 +78,12 @@ do {
             let añadir = prompt(`¿Deseas añadir este producto al carrito?Responde 'si' o 'no'`).toLowerCase();
             if (añadir === AGREGAR_CARRITO_SI) {
                 cantidadProductos = Number(prompt(`Ingresa la cantidad de productos que quieras añadir. Actualmente en stock: ${moscatel_prod.stock}`));
-                
-                if(cantidadProductos <= moscatel_prod.stock){
-                    moscatel_prod.anadirAlCarrito(cantidadProductos);
-                    moscatel_prod.modificarStock(cantidadProductos);
-                    
-                }else{
+
+                if (cantidadProductos <= moscatel_prod.stock) {
+                    /* moscatel_prod.anadirAlCarrito(cantidadProductos);
+                    moscatel_prod.modificarStock(cantidadProductos); */
+
+                } else {
                     alert(`Lo sentimos. Sólo existen ${moscatel_prod.stock} productos en stock`);
                 }
 
@@ -123,7 +105,7 @@ do {
 
     }
 
-} while (continuar === CONTINUAR_SI || stockActualMoscatel > 0 || stockActualSultanina > 0 || stockActualTorontel > 0);
+} while (continuar === CONTINUAR_SI || moscatel_prod.stock > 0 || sultanina_prod.stock > 0 || torontel_prod.stock > 0);
 
 
 alert(`Lo sentimos, el stock en todas nuestras parras se ha agotado.`);
