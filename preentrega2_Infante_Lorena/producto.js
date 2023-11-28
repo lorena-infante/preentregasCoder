@@ -12,11 +12,4 @@ class Producto {
         this.stock = stock;
         this.temporada = temporada;
     }
-    verDetallesProducto() {
-        alert(`El producto ${this.nombre} tiene las siguientes características: 
-        - Descripción: ${this.descripcion}.
-        - Cuidados: ${this.cuidados}.
-        - Iluminación: ${this.iluminacion}.
-        - Precio: ${this.precio}.`);
-    }
 }
