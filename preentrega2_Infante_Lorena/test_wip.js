@@ -20,7 +20,7 @@ const categorias = {
             descripcion: 'Uva de Chile',
             cuidados: 'Regarla',
             iluminacion: [1],
-            stock: 5,
+            stock: 10,
             temporada: "Otoño/Primavera"
         },
         torontel: {
@@ -31,7 +31,7 @@ const categorias = {
             descripcion: 'Uva de Chile',
             cuidados: 'Regarla',
             iluminacion: [1],
-            stock: 4,
+            stock: 10,
             temporada: "Otoño/Primavera"
         }
     }
@@ -42,10 +42,6 @@ const categorias = {
 const MOSCATEL = 'moscatel';
 const SULTANINA = 'sultanina';
 const TORONTEL = 'torontel';
-const AGREGAR_CARRITO_SI = 'si';
-const AGREGAR_CARRITO_NO = 'no';
-const CONTINUAR_SI = 'si';
-const CONTINUAR_NO = 'no';
 
 //instanciación de la clase Producto dentro de la función crearProducto
 
@@ -60,6 +56,8 @@ const productos = [
     crearProducto(categorias.parras.torontel)
 ];
 
+
+// constante para el input del prompt
 const mostrarProductos = productos.map((producto) => {
     return `🍇${producto.nombre} por 💰${producto.precio}\n`
 });
@@ -67,33 +65,31 @@ const mostrarProductos = productos.map((producto) => {
 //variables globales
 
 let continuar;
+let carrito = [];
 let verResumenCarrito;
 let salir = 'si';
 do {
     const escogerProducto = prompt(`¡Hola! Tenemos 3 tipos de parras para la venta:
     \n${mostrarProductos}\n Por favor escoge una opción (Escribe sólo el nombre 😉)`).toLowerCase();
+    let cantidad = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+    //funct actualiz stock
+    //funct añadir Carrito
+    //añadir a carrito
+    /* function agregarACarrito(producto, cantidad) {
+        let productosEnCarrito = productos
+    } */
+    alert(`Perfecto. Se han añadido ${cantidad} unidades de ${escogerProducto} al carrito 🛒`);
 
-    switch (escogerProducto) {
-        case MOSCATEL:
-            let cantidad = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
-            //funct actualiz stock
-            //funct añadir Carrito
-            alert(`Perfecto. Se han añadido ${cantidad} unidades de ${escogerProducto} al carrito 🛒`);
-
-            continuar = prompt(`¿Deseas seguir añadiendo productos al carrito? si/no`).toLowerCase();
-            if (continuar === 'si') {
-                salir = 'no';
-            } else {
-                //funct ver resumen carrito
-                verResumenCarrito = alert(`El resumen del carrito es: tatata`);
-                salir = prompt(`¿Deseas salir? si/no`).toLowerCase();
-                if(salir == 'si'){
-                    alert(`¡Ten un buen día. Adiós! 👋🏻`);
-                }
-                 
-            }
-        break;
-
+    continuar = prompt(`¿Deseas seguir añadiendo productos al carrito? si/no`).toLowerCase();
+    if (continuar === 'si') {
+        salir = 'no';
+    } else {
+        //funct ver resumen carrito
+        verResumenCarrito = alert(`El resumen del carrito es: tatata`);
+        salir = prompt(`¿Deseas salir? si/no`).toLowerCase();
+        if (salir == 'si') {
+            alert(`¡Ten un buen día. Adiós! 👋🏻`);
+        }
     }
 
 } while (salir === 'no')
