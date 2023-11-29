@@ -43,6 +43,8 @@ const MOSCATEL = 'moscatel';
 const SULTANINA = 'sultanina';
 const TORONTEL = 'torontel';
 
+let carrito = [];
+
 //instanciación de la clase Producto dentro de la función crearProducto
 
 function crearProducto(producto) {
@@ -63,20 +65,21 @@ const mostrarProductos = productos.map((producto) => {
 });
 
 //añadir a carrito
-let carrito =[];
+
 function agregarACarrito(producto, cantidad) {
     let productoNuevo = {
         nombre: producto.nombre,
         precio: producto.precio,
         cantidad: cantidad
     };
-      //debugger;
-   let totalProductosCarro = carrito.push(productoNuevo);
-   //console.log(carrito[0]);
- for(let i = 0; i < totalProductosCarro; i++){
-    console.log(`El carrito 🛒 ahora contiene:\n Producto: ${carrito[i].nombre}\n Precio: ${carrito[i].precio}\n Cantidad: ${carrito[i].cantidad}`);
-} 
+    carrito.push(productoNuevo);  
     return carrito;
+}
+
+function resumenCarrito (carrito){
+    carrito.map((prod) => {
+        return alert(`El carrito 🛒 ahora contiene:\n Producto: ${prod.nombre}\n Precio: ${prod.precio}\n Cantidad: ${prod.cantidad}`);
+    });
 }
 //variables globales
 
@@ -95,7 +98,7 @@ do {
     cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
 
     //asignar objeto al prod seleccionado
-    switch(escogerProducto){
+    switch (escogerProducto) {
         case MOSCATEL:
             moscatel_obj = productos[0];
             //agregar al carro
@@ -107,23 +110,19 @@ do {
             break;
         case TORONTEL:
             torontel_obj = productos[2];
+            agregarACarrito(torontel_obj, cantidad_prod);
             break;
-        default: 
-        alert(`No existe producto ${escogerProducto}`);
+        default:
+            alert(`No existe producto ${escogerProducto}`);
 
     }
-
-   
-    //funct actualiz stock
-
-    alert(`Perfecto. Se han añadido ${cantidad_prod} unidades de ${escogerProducto} al carrito 🛒`);
 
     continuar = prompt(`¿Deseas seguir añadiendo productos al carrito? si/no`).toLowerCase();
     if (continuar === 'si') {
         salir = 'no';
     } else {
         //funct ver resumen carrito
-        verResumenCarrito = alert(`El resumen del carrito es: tatata`);
+        resumenCarrito(carrito);
         salir = prompt(`¿Deseas salir? si/no`).toLowerCase();
         if (salir == 'si') {
             alert(`¡Ten un buen día. Adiós! 👋🏻`);
