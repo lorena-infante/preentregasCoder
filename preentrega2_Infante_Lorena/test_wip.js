@@ -62,23 +62,61 @@ const mostrarProductos = productos.map((producto) => {
     return `🍇${producto.nombre} por 💰${producto.precio}\n`
 });
 
+//añadir a carrito
+let carrito =[];
+function agregarACarrito(producto, cantidad) {
+    let productoNuevo = {
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: cantidad
+    };
+      //debugger;
+   let totalProductosCarro = carrito.push(productoNuevo);
+   //console.log(carrito[0]);
+ for(let i = 0; i < totalProductosCarro; i++){
+    console.log(`El carrito 🛒 ahora contiene:\n Producto: ${carrito[i].nombre}\n Precio: ${carrito[i].precio}\n Cantidad: ${carrito[i].cantidad}`);
+} 
+    return carrito;
+}
 //variables globales
 
 let continuar;
-let carrito = [];
+let cantidad_prod;
+let moscatel_obj;
+let sultanina_obj;
+let torontel_obj;
+
 let verResumenCarrito;
 let salir = 'si';
 do {
     const escogerProducto = prompt(`¡Hola! Tenemos 3 tipos de parras para la venta:
     \n${mostrarProductos}\n Por favor escoge una opción (Escribe sólo el nombre 😉)`).toLowerCase();
-    let cantidad = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+
+    cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+
+    //asignar objeto al prod seleccionado
+    switch(escogerProducto){
+        case MOSCATEL:
+            moscatel_obj = productos[0];
+            //agregar al carro
+            agregarACarrito(moscatel_obj, cantidad_prod);
+            break;
+        case SULTANINA:
+            sultanina_obj = productos[1];
+            agregarACarrito(sultanina_obj, cantidad_prod);
+            break;
+        case TORONTEL:
+            torontel_obj = productos[2];
+            break;
+        default: 
+        alert(`No existe producto ${escogerProducto}`);
+
+    }
+
+   
     //funct actualiz stock
-    //funct añadir Carrito
-    //añadir a carrito
-    /* function agregarACarrito(producto, cantidad) {
-        let productosEnCarrito = productos
-    } */
-    alert(`Perfecto. Se han añadido ${cantidad} unidades de ${escogerProducto} al carrito 🛒`);
+
+    alert(`Perfecto. Se han añadido ${cantidad_prod} unidades de ${escogerProducto} al carrito 🛒`);
 
     continuar = prompt(`¿Deseas seguir añadiendo productos al carrito? si/no`).toLowerCase();
     if (continuar === 'si') {
