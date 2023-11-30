@@ -1,14 +1,145 @@
+//categorización
+const categorias = {
+    parras: {
+        moscatel: {
+            nombre_prod: "moscatel",
+            precio_prod: 8000,
+            altura: '1mt',
+            img: './moscatel.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 10,
+            temporada: "Otoño/Primavera"
+        },
+        sultanina: {
+            nombre_prod: "sultanina",
+            precio_prod: 7000,
+            altura: '1mt',
+            img: './sultanina.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 10,
+            temporada: "Otoño/Primavera"
+        },
+        torontel: {
+            nombre_prod: "torontel",
+            precio_prod: 9000,
+            altura: '1mt',
+            img: './torontel.jpg',
+            descripcion: 'Uva de Chile',
+            cuidados: 'Regarla',
+            iluminacion: [1],
+            stock: 10,
+            temporada: "Otoño/Primavera"
+        }
+    }
+};
+
+//constantes globales
+
+const MOSCATEL = 'moscatel';
+const SULTANINA = 'sultanina';
+const TORONTEL = 'torontel';
+
+let carrito = [];
+let resCarrito = '';
+let subtotalValues= [];
+//instanciación de la clase Producto dentro de la función crearProducto
+
+function crearProducto(producto) {
+    const newProd = new Producto(producto.nombre_prod, producto.precio_prod, producto.altura, producto.img, producto.descripcion, producto.cuidados, producto.iluminacion, producto.stock, producto.temporada);
+    return newProd;
+}
+
 const productos = [
-    new Producto('frutal','Almendro',9000,1.5,'./almendro.jpg','Un árbol de Almendro', 'Requiere Sol o SemiSombra',[0,1],10,'verano'),
-    new Producto('parra','Moscatel',8000,1,'./moscatel.jpg','Una parra de moscatel', 'Requiere Sol',[0],10,'otoño'),
-    new Producto('planta','Hortensia',8000,0.3,'./hortensia.jpg','Una planta de hortensia de 30cms', 'Requiere Sol o SemiSombra',[0,1],10,'verano'),
-    new Producto('rosas','Rosa',7000,0.5,'./rosa.jpg','Una planta de rosa botonera de 50 cms', 'Requiere   SemiSombra',[1],10,'primavera'),
-    new Producto('cactus','Cactus',5000,0.2,'./cactus.jpg','Un cactus orejas de conejo', 'Requiere Sol o SemiSombra',[0],10,'invierno'),
+    crearProducto(categorias.parras.moscatel),
+    crearProducto(categorias.parras.sultanina),
+    crearProducto(categorias.parras.torontel)
 ];
 
-let input = prompt(`Bienvenido. Tenemos los siguientes productos. Escriba el de su preferencia:
-${productos.map((prod)=>{ 
-    let prod_precio = `\n🌼 Producto: ${prod.nombre} 💰 Precio: ${prod.precio}\n`;
-    return prod_precio;
-    })}`).toLowerCase();
+
+// constante para el input del prompt
+const mostrarProductos = productos.map((producto) => {
+    return `🍇${producto.nombre} por 💰${producto.precio}\n`
+});
+
+//añadir a carrito
+
+function agregarACarrito(producto, cantidad) {
+    let productoNuevo = {
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: cantidad
+    };
+    carrito.push(productoNuevo);  
+    return carrito;
+}
+
+function resumenCarrito (carrito){
+
+carrito.map((producto)=>{
+    subtotal = producto.precio * producto.cantidad;
+    subtotalValues.push(subtotal);
+    total = subtotalValues.reduce((total,subtotal)=>{
+        return total + subtotal;
+    },0);
+
+    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad} \n Subtotal de ${producto.nombre}: ${subtotal}`
+});
+
+
+alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}.\n\nEl total del carrito es de ${total}`);
+     
+}
+
+//variables globales
+
+let continuar;
+let cantidad_prod;
+let moscatel_obj;
+let sultanina_obj;
+let torontel_obj;
+let salir = 'si';
+do {
+    const escogerProducto = prompt(`¡Hola! Tenemos 3 tipos de parras para la venta:
+    \n${mostrarProductos}\n Por favor escoge una opción (Escribe sólo el nombre 😉)`).toLowerCase();
+
+    //asignar objeto al prod seleccionado
+    switch (escogerProducto) {
+        case MOSCATEL:
+            moscatel_obj = productos[0];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+            //agregar al carro
+            agregarACarrito(moscatel_obj, cantidad_prod);
+            break;
+        case SULTANINA:
+            sultanina_obj = productos[1];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+            agregarACarrito(sultanina_obj, cantidad_prod);
+            break;
+        case TORONTEL:
+            torontel_obj = productos[2];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
+            agregarACarrito(torontel_obj, cantidad_prod);
+            break;
+        default:
+            alert(`No existe producto ${escogerProducto}`);
+
+    }
+
+    continuar = prompt(`¿Deseas seguir añadiendo productos al carrito? si/no`).toLowerCase();
+    if (continuar === 'si') {
+        salir = 'no';
+    } else {
+        //funct ver resumen carrito
+        resumenCarrito(carrito);
+        salir = prompt(`¿Deseas salir? si/no`).toLowerCase();
+        if (salir == 'si') {
+            alert(`¡Ten un buen día. Adiós! 👋🏻`);
+        }
+    }
+
+} while (salir === 'no')
 
