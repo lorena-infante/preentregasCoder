@@ -45,6 +45,7 @@ const TORONTEL = 'torontel';
 
 let carrito = [];
 let resCarrito = '';
+let subtotalValues= [];
 //instanciación de la clase Producto dentro de la función crearProducto
 
 function crearProducto(producto) {
@@ -79,12 +80,20 @@ function agregarACarrito(producto, cantidad) {
 function resumenCarrito (carrito){
 
 carrito.map((producto)=>{
-    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad}`
+    subtotal = producto.precio * producto.cantidad;
+    subtotalValues.push(subtotal);
+    total = subtotalValues.reduce((total,subtotal)=>{
+        return total + subtotal;
+    },0);
+
+    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad} \n Subtotal de ${producto.nombre}: ${subtotal}`
 });
 
-alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}`);
+
+alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}.\n\nEl total del carrito es de ${total}`);
      
 }
+
 //variables globales
 
 let continuar;
