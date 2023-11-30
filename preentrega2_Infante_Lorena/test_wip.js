@@ -44,7 +44,7 @@ const SULTANINA = 'sultanina';
 const TORONTEL = 'torontel';
 
 let carrito = [];
-
+let resCarrito = '';
 //instanciación de la clase Producto dentro de la función crearProducto
 
 function crearProducto(producto) {
@@ -77,9 +77,13 @@ function agregarACarrito(producto, cantidad) {
 }
 
 function resumenCarrito (carrito){
-    carrito.map((prod) => {
-        return alert(`El carrito 🛒 ahora contiene:\n Producto: ${prod.nombre}\n Precio: ${prod.precio}\n Cantidad: ${prod.cantidad}`);
-    });
+
+carrito.map((producto)=>{
+    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad}`
+});
+
+alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}`);
+     
 }
 //variables globales
 
@@ -88,28 +92,27 @@ let cantidad_prod;
 let moscatel_obj;
 let sultanina_obj;
 let torontel_obj;
-
-let verResumenCarrito;
 let salir = 'si';
 do {
     const escogerProducto = prompt(`¡Hola! Tenemos 3 tipos de parras para la venta:
     \n${mostrarProductos}\n Por favor escoge una opción (Escribe sólo el nombre 😉)`).toLowerCase();
 
-    cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
-
     //asignar objeto al prod seleccionado
     switch (escogerProducto) {
         case MOSCATEL:
             moscatel_obj = productos[0];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
             //agregar al carro
             agregarACarrito(moscatel_obj, cantidad_prod);
             break;
         case SULTANINA:
             sultanina_obj = productos[1];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
             agregarACarrito(sultanina_obj, cantidad_prod);
             break;
         case TORONTEL:
             torontel_obj = productos[2];
+            cantidad_prod = Number(prompt(`¿Cuántas unidades de ${escogerProducto} deseas añadir?`));
             agregarACarrito(torontel_obj, cantidad_prod);
             break;
         default:
