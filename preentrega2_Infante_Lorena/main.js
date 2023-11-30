@@ -86,11 +86,11 @@ carrito.map((producto)=>{
         return total + subtotal;
     },0);
 
-    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad} \n Subtotal de ${producto.nombre}: ${subtotal}`
+    resCarrito = resCarrito + `\n Producto: ${producto.nombre}\n Precio: ${producto.precio}\n Cantidad: ${producto.cantidad} \n Subtotal de ${producto.nombre}: $${subtotal}`
 });
 
 
-alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}.\n\nEl total del carrito es de ${total}`);
+alert(`Este es el resumen de los productos 🛒: \n ${resCarrito}.\n\nEl total del carrito es de $${total}`);
      
 }
 
@@ -135,10 +135,8 @@ do {
     } else {
         //funct ver resumen carrito
         resumenCarrito(carrito);
-        salir = prompt(`¿Deseas salir? si/no`).toLowerCase();
-        if (salir == 'si') {
-            alert(`¡Ten un buen día. Adiós! 👋🏻`);
-        }
+        salir = 'si';
+        alert(`¡Ten un buen día. Adiós! 👋🏻`);
     }
 
 } while (salir === 'no')
