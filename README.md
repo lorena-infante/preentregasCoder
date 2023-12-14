@@ -7,4 +7,8 @@ Este repositorio tiene como objetivo presentar los avances de las preentregas ha
 
 ## Segunda Preentrega: utilización de Arrays, Clases Constructoras, Higher Order Functions y operaciones entre datos.
 
-- Basada en la entrega final (e-commerce de plantas y jardinería), se le solicitará al usuario por medio de prompt agregar la cantidad y el nombre de los productos de su preferencia. Una vez almacenados dentro de un array se le dará la opción de ordenar por precio (mayor a menor y viceversa). Finalmente se realizará una operación que simulará el precio total de la compra y se mostrará por medio de alert().
+- Basada en la entrega final (e-commerce de plantas y jardinería), se le solicitará al usuario por medio de prompt agregar la cantidad y el nombre de los productos de su preferencia. Finalmente se realizará una operación que simulará el precio total de la compra y se mostrará por medio de alert().
+
+## Tercera Preentrega
+
+- Utilizando las dos preentregas anteriores, se ha creado una página web utilizando HTML,CSS Y Javascript. Haciendo uso de Objetos, Arreglos, LocalStorage, operadores avanzados e interacción de eventos con el usuario.
